@@ -14,11 +14,11 @@ import mongoose from 'mongoose';
 // Import internal items
 // @ts-ignore
 import config from '../config.json'
+console.log('1')
 export default class Server {
     public config: { token: string; mongoURL: string;}
-    public app: express;
+    public app: express.Application;
     public client: discord.Client;
-    public urls: {api: string; web: string;};
     public redis: Redis.Redis;
     public signale: Signale.Signale
     constructor() {
@@ -35,14 +35,13 @@ export default class Server {
         this.client = new discord.Client();
         this.connect()
     }
-
     private connect() {
         /*
         mongoose.connect(this.config.mongoURL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+
         });
          */
+        console.log('2')
         this.client.login(this.config.token).then(r => {
             console.log(this.config.token == r)
         });
@@ -57,6 +56,9 @@ export default class Server {
             },
             }));
         this.app.use(bodyParser.json());
+        this.app.get( "/", ( req, res ) => {
+            res.send( "Hello world!" );
+        } );
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })

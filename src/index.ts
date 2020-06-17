@@ -1,1 +1,2 @@
-export { default as Server } from './Server';
+import Server from './Server'
+new Server()
