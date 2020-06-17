@@ -7,7 +7,7 @@ const forceAuth = (req, res, next) => {
 }
 router.get('/', function (req, res) {
     console.log('they went to jagc');
-    res.render(process.cwd() + '/public/jagc/home', function (err, html) {
+    res.render(process.cwd() + '/public/jagc/home.html', function (err, html) {
         res.send(html)
     })
     // res.send('enjoy bitch')
