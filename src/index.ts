@@ -43,4 +43,4 @@ client.once('ready', () => {
 client.on('message', async (message: discord.Message) => {
 
 })
-client.login(this.config.token);
+client.login(client.config.token);
