@@ -1,14 +1,9 @@
-import { Route } from '../class';
-import { Server } from '../class';
+import { Router } from 'express';
 
-export default class jagc extends Route {
-    constructor(server: Server) {
-        super(server, {path: '/jagc', authOnly: false, deprecated: false, maintenance: false})
-    }
-
-    public bind() {
-        this.router.post('/active', async (req, res) => {
-            res.send('you got this !!!!')
-        })
-    }
+const forceAuth = (req, res, next) => {
+    if (!req.session.user) return res.redirect('/')
 }
+Router.get('/', (req, res) => {
+    console.log('they went to jagc');
+    res.send('enjoy bitch')
+});

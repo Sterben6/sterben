@@ -69,31 +69,10 @@ export default class Server {
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })
-        this.app.get( "/jagc/", ( req, res ) => {
+        this.app.get( "/jagc", ( req, res ) => {
             res.send( "test test test!" );
         } );
-    }
-    public async loadRoutes(): Promise<void> {
-        const routes = await fs.readdir(`${__dirname}/routes`);
-        await routes.forEach(async (routeFile) => {
-            if (routeFile === 'index.js') return;
-            try {
-                // eslint-disable-next-line new-cap
-                const route: Route = new (require(`${__dirname}/routes/${routeFile}`).default)(this);
-                if (route.conf.deprecated) {
-                    route.deprecated();
-                } else if (route.conf.maintenance) {
-                    route.maintenance();
-                } else {
-                    route.bind();
-                }
-                this.routes.set(route.conf.path, route);
-                this.app.use(route.conf.path, route.router);
-                this.signale.success(`Successfully loaded route: ${route.conf.path}`);
-            } catch (error) {
-                this.signale.error(error);
-            }
-        })
+        this.app.use('/jagc', require('../routes/jagc'));
     }
 
 }
