@@ -37,4 +37,7 @@ export default class Client extends discord.Client {
 
 }
 const client: Client = new Client({ partials: ['MESSAGE','CHANNEL','REACTION'], ws: { intents: i} });
+client.once('ready', () => {
+    console.log('yes')
+})
 client.login(this.config.token);
