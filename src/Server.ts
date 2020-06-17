@@ -37,10 +37,12 @@ export default class Server {
     }
 
     private connect() {
+        /*
         mongoose.connect(this.config.mongoURL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+         */
         this.client.login(this.config.token).then(r => {
             console.log(this.config.token == r)
         });
