@@ -1,8 +1,6 @@
 // Import utilities
 import * as discord from 'discord.js';
 import fs from 'fs-extra';
-import { Server } from './class';
-import * as moment from 'moment';
 import { parse } from 'yaml';
 import { Client } from './class'
 const i = new discord.Intents(discord.Intents.ALL);
@@ -13,7 +11,7 @@ import * as eventFiles from './events';
 // @ts-ignore
 import * as commandFiles from './commands';
 async function main(): Promise<void> {
-    const read = await fs.readFile('../config.json', 'utf8');
+    const read = await fs.readFile(process.cwd() + 'config.json', 'utf8');
     const config: { token: string, prefix: string, guildID: string, mongoDB: string, emailPass: string } = parse(read);
     const client: Client = new Client(config.token, { partials: ['MESSAGE','CHANNEL','REACTION'], ws: { intents: i} });
 
