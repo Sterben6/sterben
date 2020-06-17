@@ -1,4 +1,4 @@
-import Server from './Server'
+import Server from './Server.js'
 // Import utilities
 import * as discord from 'discord.js';
 import fs from 'fs-extra';
