@@ -3,7 +3,7 @@ import { Server } from '../class';
 
 export default class jagc extends Route {
     constructor(server: Server) {
-        super(server, {path: '/jagc', authOnly: true, deprecated: false, maintenance: false})
+        super(server, {path: '/jagc', authOnly: false, deprecated: false, maintenance: false})
     }
 
     public bind() {

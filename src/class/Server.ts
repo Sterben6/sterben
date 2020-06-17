@@ -16,6 +16,8 @@ import mongoose from 'mongoose';
 // Import internal items
 // @ts-ignore
 import config from '../../config.json'
+import { Route } from '.'
+
 console.log('1')
 export default class Server {
     public config: { token: string; mongoURL: string;}
@@ -23,6 +25,7 @@ export default class Server {
     public client: discord.Client;
     public redis: Redis.Redis;
     public signale: Signale.Signale
+    public routes: Map<string, Route>
     constructor() {
         this.config = config;
         this.redis = new Redis();
@@ -34,6 +37,7 @@ export default class Server {
             displayDate: true,
         });
 
+        this.routes = new Map();
         this.client = new discord.Client();
         this.connect()
     }
@@ -67,4 +71,27 @@ export default class Server {
         })
 
     }
+    private async loadRoutes(): Promise<void> {
+        const routes = await fs.readdir(`${__dirname}/routes`);
+        await routes.forEach(async (routeFile) => {
+            if (routeFile === 'index.js') return;
+            try {
+                // eslint-disable-next-line new-cap
+                const route: Route = new (require(`${__dirname}/routes/${routeFile}`).default)(this);
+                if (route.conf.deprecated) {
+                    route.deprecated();
+                } else if (route.conf.maintenance) {
+                    route.maintenance();
+                } else {
+                    route.bind();
+                }
+                this.routes.set(route.conf.path, route);
+                this.app.use(route.conf.path, route.router);
+                this.signale.success(`Successfully loaded route: ${route.conf.path}`);
+            } catch (error) {
+                this.signale.error(error);
+            }
+        })
+    }
+
 }
