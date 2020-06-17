@@ -70,6 +70,7 @@ export default class Server {
             this.signale.success(`Server listening on port ${8123}`);
         })
         this.app.use('/jagc', require('../routes/jagc'));
+        this.app.use('/jagc', express.static(path.join(process.cwd() + '/public/static.css')));
     }
 
 }
