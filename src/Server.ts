@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import * as discord from 'discord.js';
 import fs from 'fs-extra';
 import * as moment from 'moment';
-import Signale from 'Signale';
+import Signale from 'signale';
 // Import storage & DB libraries
 import Redis from 'ioredis';
 import mongoose from 'mongoose';
