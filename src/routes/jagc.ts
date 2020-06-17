@@ -8,4 +8,9 @@ router.get('/', function (req, res) {
     res.send('enjoy bitch')
 });
 
+router.get('/active', function (req, res) {
+    res.send(req.ip)
+})
+
+
 module.exports = router;
