@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import favicon from 'serve-favicon'
 import cookeParser from 'cookie-parser';
+import serverStatic from 'serve-static';
 import helmet from 'helmet';
 // Import utilities
 import * as discord from 'discord.js';
@@ -70,7 +71,7 @@ export default class Server {
             this.signale.success(`Server listening on port ${8123}`);
         })
         this.app.use('/jagc', require('../routes/jagc'));
-        this.app.use('/jagc', express.static(path.join(process.cwd() + '/public/static.css')));
+        this.app.use('/jagc', express.static(process.cwd() + '/public/jagc'))
     }
 
 }
