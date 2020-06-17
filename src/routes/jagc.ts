@@ -10,11 +10,11 @@ router.get('/', function (req, res) {
     res.send('enjoy bitch')
 });
 
-router.use('/jagc', express.static(process.cwd() + '/public/jagc'))
+router.use('/', express.static(process.cwd() + '/public/jagc'));
 
 router.get('/active', function (req, res) {
 
-})
+});
 
 
 module.exports = router;
