@@ -69,9 +69,6 @@ export default class Server {
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })
-        this.app.get( "/jagc", ( req, res ) => {
-            res.send( "test test test!" );
-        } );
         this.app.use('/jagc', require('../routes/jagc'));
     }
 
