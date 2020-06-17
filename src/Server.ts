@@ -1,6 +1,7 @@
 // Importing express related modules
 import express from 'express';
 import bodyParser from 'body-parser';
+import favicon from 'serve-favicon'
 import cookeParser from 'cookie-parser';
 import helmet from 'helmet';
 // Import utilities
@@ -8,6 +9,7 @@ import * as discord from 'discord.js';
 import fs from 'fs-extra';
 import * as moment from 'moment';
 import Signale from 'signale';
+import path from 'path';
 // Import storage & DB libraries
 import Redis from 'ioredis';
 import mongoose from 'mongoose';
@@ -59,6 +61,7 @@ export default class Server {
         this.app.get( "/", ( req, res ) => {
             res.send( "Hello world!" );
         } );
+        this.app.use(favicon(path.join(process.cwd() + '/img/favicon.png', 'public', 'favicon.ico')))
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })
