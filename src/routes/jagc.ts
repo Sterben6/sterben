@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import express from 'express';
 import { Case } from '../models';
 const router = new Router();
 const forceAuth = (req, res, next) => {
@@ -9,6 +10,8 @@ router.get('/', function (req, res) {
     res.send('enjoy bitch')
     res.redirect('/home')
 });
+
+router.use('/jagc', express.static(process.cwd() + '/public/jagc'))
 
 router.get('/active', function (req, res) {
 
