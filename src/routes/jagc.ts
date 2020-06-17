@@ -8,7 +8,6 @@ const forceAuth = (req, res, next) => {
 router.get('/', function (req, res) {
     console.log('they went to jagc');
     res.send('enjoy bitch')
-    res.redirect('/home')
 });
 
 router.use('/jagc', express.static(process.cwd() + '/public/jagc'))
