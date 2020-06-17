@@ -24,7 +24,7 @@ export default class Server {
     constructor() {
         this.config = config;
         this.redis = new Redis();
-        this.app = express()
+        this.app = express();
         this.signale = Signale;
         this.signale.config({
             displayFilename: true,
