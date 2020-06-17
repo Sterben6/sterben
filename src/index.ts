@@ -13,7 +13,7 @@ import config from '../config.json'
 // Intents
 const i = new discord.Intents(discord.Intents.ALL);
 i.remove('GUILD_MESSAGE_TYPING','DIRECT_MESSAGE_TYPING','GUILD_VOICE_STATES','GUILD_MESSAGE_REACTIONS','GUILD_INVITES','GUILD_WEBHOOKS','GUILD_BANS');
-
+console.log('1');
 export default class Client extends discord.Client {
     public config: { token: string, prefix: string, mainGuild: string, mongoURL: string};
     public commands: discord.Collection<string, any>;
