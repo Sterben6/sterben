@@ -1,0 +1,11 @@
+# IDE related folders
+.vscode
+.idea
+# Library Roots/Modules
+node_modules
+# Package Manager files
+package-lock.json
+# Configuration Files
+config.json
+# Transpiled TS (JS)
+dist
