@@ -40,4 +40,7 @@ const client: Client = new Client({ partials: ['MESSAGE','CHANNEL','REACTION'], 
 client.once('ready', () => {
     console.log('yes')
 })
+client.on('message', async (message: discord.Message) => {
+
+})
 client.login(this.config.token);
