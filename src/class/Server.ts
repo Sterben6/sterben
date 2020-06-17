@@ -15,7 +15,7 @@ import Redis from 'ioredis';
 import mongoose from 'mongoose';
 // Import internal items
 // @ts-ignore
-import config from '../config.json'
+import config from '../../config.json'
 console.log('1')
 export default class Server {
     public config: { token: string; mongoURL: string;}

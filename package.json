@@ -21,6 +21,7 @@
     "path": "^0.12.7",
     "serve-favicon": "^2.5.0",
     "signale": "^1.4.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "yaml": "^1.10.0"
   }
 }

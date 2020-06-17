@@ -1,46 +1,22 @@
-import Server from './Server.js'
 // Import utilities
 import * as discord from 'discord.js';
 import fs from 'fs-extra';
 import * as moment from 'moment';
-import Signale from 'signale';
-// Import storage & DB libraries
-import Redis from 'ioredis';
-import mongoose from 'mongoose';
-// Import internal items
-// @ts-ignore
-import config from '../config.json'
-// Intents
+import { parse } from 'yaml';
+import { Client } from './class'
 const i = new discord.Intents(discord.Intents.ALL);
 i.remove('GUILD_MESSAGE_TYPING','DIRECT_MESSAGE_TYPING','GUILD_VOICE_STATES','GUILD_MESSAGE_REACTIONS','GUILD_INVITES','GUILD_WEBHOOKS','GUILD_BANS');
-console.log('1');
-export default class Client extends discord.Client {
-    public config: { token: string, prefix: string, mainGuild: string, mongoURL: string};
-    public commands: discord.Collection<string, any>;
-    public signale: Signale.Signale;
-    public server: Server;
-    public redis: Redis.Redis;
+// Imports events & commands
+// @ts-ignore
+import * as eventFiles from './events';
+async function main(): Promise<void> {
+    const read = await fs.readFile('../config.json', 'utf8');
+    const config: { token: string, prefix: string, guildID: string, mongoDB: string, emailPass: string } = parse(read);
+    const client: Client = new Client(config.token, { partials: ['MESSAGE','CHANNEL','REACTION'], ws: { intents: i} });
 
-    constructor(options?: discord.ClientOptions) {
-        super(options);
-        this.commands = new discord.Collection();
-        this.config = config;
-        this.redis = new Redis();
-        this.signale = Signale;
-        this.server = new Server()
-        this.signale.config({
-            displayFilename: true,
-            displayTimestamp: true,
-            displayDate: true,
-        });
-    }
+    await client.loadEvents(eventFiles);
 
+
+    await client.login()
 }
-const client: Client = new Client({ partials: ['MESSAGE','CHANNEL','REACTION'], ws: { intents: i} });
-client.once('ready', () => {
-    console.log('yes')
-})
-client.on('message', async (message: discord.Message) => {
-
-})
-client.login(client.config.token);
+main();
