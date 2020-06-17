@@ -17,7 +17,6 @@ async function main(): Promise<void> {
 
     await client.loadEvents(eventFiles);
     await client.loadCommands(commandFiles)
-    await client.server.loadRoutes();
     await client.login()
 }
 main();
