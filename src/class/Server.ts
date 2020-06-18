@@ -66,8 +66,8 @@ export default class Server {
             res.send( "Hello world!" );
         } );
         this.app.use(favicon(path.join(process.cwd(), 'img', 'favicon.ico')))
-        this.app.listen(5000, () => {
-            this.signale.success(`Server listening on port ${5000}`);
+        this.app.listen(8123, () => {
+            this.signale.success(`Server listening on port ${8123}`);
         })
         this.app.use('/jagc', require('../routes/jagc'));
     }
