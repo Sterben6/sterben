@@ -65,11 +65,11 @@ export default class Server {
         this.app.get( "/", ( req, res ) => {
             res.send( "Hello world!" );
         } );
-        this.app.use(favicon(path.join(process.cwd(), 'img', 'favicon.ico')))
+        // this.app.use(favicon(path.join(process.cwd(), 'img', 'favicon.ico')))
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })
-        this.app.use('/jagc', require('../routes/jagc'));
+        // this.app.use('/jagc', require('../routes/jagc'));
     }
 
 }
