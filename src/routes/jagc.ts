@@ -5,8 +5,8 @@ const router = new Router();
 const forceAuth = (req, res, next) => {
     if (!req.session.user) return res.redirect('/')
 }
-router.get('/', function (res, next: () => void) {
-    res.sendfile(process.cwd() + '/public/jagc/home.html')
+router.get('/', function (res: { sendFile: (arg0: string) => void; }, next: () => void) {
+    res.sendFile(process.cwd() + '/public/jagc/home.html')
 });
 
 
