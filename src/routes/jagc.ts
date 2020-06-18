@@ -9,14 +9,10 @@ const forceAuth = (req, res, next) => {
 router.get('/', function (res: { render: (s: string) => void;
     send(html: any): void;
 }, next: () => void) {
-    // @ts-ignore
-    res.render(path.join(process.cwd() + '/public/jagc/home.html'), function (err, html): void {
-        if (err) return console.log(err);
-        res.send(html)
-    })
+
 });
 
-
+router.use('/', express.static(process.cwd() + '/public/jagc'));
 router.get('/active', function (req, res) {
     res.send('hi');
 });
