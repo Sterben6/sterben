@@ -6,7 +6,7 @@ import path from 'path';
 const forceAuth = (req, res, next) => {
     if (!req.session.user) return res.redirect('/')
 }
-router.get('/', function (res: { render: (s: string) => void;
+router.get('/', function (req, res: { render: (s: string) => void;
     send(html: any): void;
 }, next: () => void) {
     // @ts-ignore
