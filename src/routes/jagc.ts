@@ -10,10 +10,10 @@ router.get('/', function (res: { render: (s: string) => void;
     send(html: any): void;
 }, next: () => void) {
     // @ts-ignore
-    res.render(path.join(process.cwd() + '/public/jagc/home.html', function (err, html): void {
+    res.render(path.join(process.cwd() + '/public/jagc/home.html'), function (err, html): void {
         if (err) return console.log(err);
         res.send(html)
-    }))
+    })
 });
 
 
