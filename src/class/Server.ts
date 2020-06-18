@@ -19,7 +19,6 @@ import mongoose from 'mongoose';
 import config from '../../config.json'
 import { Route } from '.'
 
-console.log('1')
 export default class Server {
     public config: { token: string; mongoURL: string;}
     public app: express.Application;
