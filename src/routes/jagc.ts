@@ -9,8 +9,8 @@ const forceAuth = (req, res, next) => {
 const homePath = path.join(process.cwd() + '/public/jagc/home.html')
 router.get('/', function (req, res) {
     res.render(homePath, function(err, html) {
-        res.send(html)
-    })
+
+        })
 })
 
 
