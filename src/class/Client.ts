@@ -1,8 +1,6 @@
 import { Server, Event, Collection,Command } from '.'
 // Import utilities
 import * as discord from 'discord.js';
-import fs from 'fs-extra';
-import * as moment from 'moment';
 import Signale from 'signale';
 // Import storage & DB libraries
 import Redis from 'ioredis';
