@@ -10,17 +10,22 @@ body {
     padding: 4px 42px;
 }
 
-.page-content h1 { margin-bottom: -10px; }
+.page-content h1 {
+    margin-bottom: -10px;
+    margin-top: 50px;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: #ffffff;
 }
+
 h1, h2 {
     text-align: center;
     margin: 0 auto;
 }
+
 
 p, a {
     font-family: 'Roboto', sans-serif;
