@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import express from 'express';
-import { Case } from '../models';
 const router = new Router();
 import path from 'path';
 const forceAuth = (req, res, next) => {
@@ -17,8 +16,9 @@ router.get('/active', function (req, res) {
 });
 
 router.get('/api/cases/:caseId', async (req, res) => {
-    const caseId = req.params.caseId;
-
+    const caseid = req.params.caseId;
+    const caseObj = await this.client.db.Case.findOne({caseId: caseid});
+    if (!caseObj) return res.status(404);
 })
 
 
