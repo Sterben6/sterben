@@ -6,7 +6,7 @@ import path from 'path';
 const forceAuth = (req, res, next) => {
     if (!req.session.user) return res.redirect('/')
 }
-const homePath = path.join(process.cwd() + '/public/jagc/home.html')
+const homePath = path.join(process.cwd() + '/public/jagc/home.html');
 router.get('/', function (req, res) {
     res.sendFile(homePath)
 })
