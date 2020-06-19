@@ -15,6 +15,7 @@ async function main(): Promise<void> {
     const config: { token: string, prefix: string, guildID: string, mongoDB: string, emailPass: string } = parse(read);
     const client: Client = new Client(config.token, { partials: ['MESSAGE','CHANNEL','REACTION'], ws: { intents: i} });
 
+    await client.loadDatabase();
     await client.loadEvents(eventFiles);
     await client.loadCommands(commandFiles)
     await client.login()

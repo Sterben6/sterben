@@ -16,5 +16,10 @@ router.get('/active', function (req, res) {
     res.send('hi');
 });
 
+router.get('/api/cases/:caseId', async (req, res) => {
+    const caseId = req.params.caseId;
+
+})
+
 
 module.exports = router;

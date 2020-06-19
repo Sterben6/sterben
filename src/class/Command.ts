@@ -63,13 +63,13 @@ export default class Command {
                 return true;
             case 1:
                 // @ts-ignore
-                return member.roles.cache.some((r) => ['709720483813392385', '709720224403816519', '709720523319541820', '709721377162395671', '709726951157530805', '709721648084942869'].includes(r));
+                return member.roles.cache.some((r) => ['707065690204536943'].includes(r));
             case 2:
                 // @ts-ignore
-                return member.roles.cache.some((r) => ['709720445410213889'].includes(r));
+                return member.roles.cache.some((r) => ['707065798581026836'].includes(r));
             case 3:
                 // @ts-ignore
-                return member.roles.cache.some((r) => ['696783944867250287', '709720701971726346','709720310789963797','709720408252874762'].includes(r));
+                return member.roles.cache.some((r) => ['707279018746970204'].includes(r));
             default:
                 return false;
         }
