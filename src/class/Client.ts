@@ -40,7 +40,7 @@ export default class Client extends discord.Client {
     }
 
     public async loadDatabase() {
-        await mongoose.connect(this.config.mongoURL, { useNewUrlParser: true})
+        await mongoose.connect(this.config.mongoURL, { useNewUrlParser: true, useUnifiedTopology: true})
     }
 
     public async loadEvents(eventFiles: { ready; CommandHandler }) {
