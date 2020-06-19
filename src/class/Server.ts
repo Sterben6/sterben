@@ -61,7 +61,8 @@ export default class Server {
                 },
             },
             }));
-        this.app.set('view engine', 'html')
+        this.app.set('view engine', 'html');
+        this.app.use(express.static(path.join(process.cwd() + '/public')))
         this.app.use(bodyParser.json());
         this.app.get( "/", ( req, res ) => {
             res.send( "Hello world!" );
