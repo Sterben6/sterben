@@ -8,7 +8,7 @@ const forceAuth = (req, res, next) => {
 }
 const homePath = path.join(process.cwd() + '/public/jagc/home')
 router.get('/', function (req, res) {
-    res.render(homePath)
+    res.sendFile(homePath)
 })
 
 
