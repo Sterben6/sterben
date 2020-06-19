@@ -61,6 +61,7 @@ export default class Server {
                 },
             },
             }));
+        this.app.set('view engine', 'html')
         this.app.use(bodyParser.json());
         this.app.get( "/", ( req, res ) => {
             res.send( "Hello world!" );
