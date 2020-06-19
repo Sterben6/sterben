@@ -7,10 +7,8 @@ const forceAuth = (req, res, next) => {
     if (!req.session.user) return res.redirect('/')
 }
 const homePath = path.join(process.cwd() + '/public/jagc/home.html');
-const staticCss = path.join(process.cwd() + '/public/static.css');
 router.get('/', function (req, res, next) {
     res.sendFile(homePath);
-    res.sendFile(staticCss)
     next()
 })
 
