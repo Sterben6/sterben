@@ -65,7 +65,7 @@ export default class Server {
         this.app.use(express.static(path.join(process.cwd() + '/public')))
         this.app.use(bodyParser.json());
         this.app.get( "/", ( req, res ) => {
-            res.send( "Hello world!" );
+            res.sendFile(path.join(process.cwd() + '/public/index.html'))
         });
         this.app.use(favicon(path.join(process.cwd(), 'img', 'favicon.ico')))
         this.app.listen(8123, () => {
