@@ -16,7 +16,7 @@ router.get('/active', function (req, res) {
 
 router.get('/api/cases/:caseId', async (req, res) => {
     const caseid = req.params.caseId;
-    const caseObj = await this.db.findOne({caseId: caseid});
+    const caseObj = await this.db.Case.findOne({caseId: caseid});
     if (!caseObj) return res.status(404);
 })
 
