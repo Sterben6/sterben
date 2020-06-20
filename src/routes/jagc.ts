@@ -23,12 +23,12 @@ router.get('/active', function (req, res) {
 });
 
 router.get('/api/cases/:caseId', async (req, res) => {
-    if (req.ip !== '73.136.46.75') return res.status(403);
+    if (req.ip !== '73.136.46.75') return res.sendStatus(403);
     await connect();
     const modelSchema = Case;
     const caseid = req.params.caseId;
     const caseObj = await modelSchema.findOne({caseId: caseid});
-    if (!caseObj) return res.status(404);
+    if (!caseObj) return res.sendStatus(404);
     console.log(caseObj)
 })
 
