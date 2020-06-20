@@ -24,16 +24,7 @@ export default class Command {
 
     public aliases: string[];
 
-    /**
-     * - **0:** Everyone
-     * - **1:** Associates+
-     * - **2:** Core Team+
-     * - **3:** Moderators, Supervisor, & Board of Directors
-     * - **4:** Technicians, Supervisor, & Board of Directors
-     * - **5:** Moderators, Technicians, Supervisor, & Board of Directors
-     * - **6:** Supervisor+
-     * - **7:** Board of Directors
-     */
+
     public permissions: number;
 
     /**
@@ -63,10 +54,10 @@ export default class Command {
                 return true;
             case 1:
                 // @ts-ignore
-                return member.roles.cache.some((r) => ['707065690204536943'].includes(r));
+                return member.roles.cache.some((r) => ['707065690204536943','707065798581026836','707279018746970204'].includes(r));
             case 2:
                 // @ts-ignore
-                return member.roles.cache.some((r) => ['707065798581026836'].includes(r));
+                return member.roles.cache.some((r) => ['707065798581026836','707279018746970204'].includes(r));
             case 3:
                 // @ts-ignore
                 return member.roles.cache.some((r) => ['707279018746970204'].includes(r));

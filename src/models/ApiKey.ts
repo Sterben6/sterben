@@ -3,6 +3,7 @@ import { User } from 'discord.js';
 
 export interface ApiKeyInterface extends Document {
     ApiKey: string,
+    user: string,
     creator: string,
     uses: number,
     status: boolean,
@@ -11,6 +12,7 @@ export interface ApiKeyInterface extends Document {
 
 const ApiKey: Schema = new Schema({
     ApiKey: String,
+    user: String,
     creator: String,
     uses: Number,
     status: Boolean,

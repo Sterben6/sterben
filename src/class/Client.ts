@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 // Import internal items
 // @ts-ignore
 import config from '../../config.json'
-import { Case, CaseInterface } from "../models";
+import { Case, CaseInterface, ApiKey, ApiKeyInterface } from "../models";
 // Intents
 const i = new discord.Intents(discord.Intents.ALL);
 i.remove('GUILD_MESSAGE_TYPING','DIRECT_MESSAGE_TYPING','GUILD_VOICE_STATES','GUILD_MESSAGE_REACTIONS','GUILD_INVITES','GUILD_WEBHOOKS','GUILD_BANS');
@@ -20,7 +20,7 @@ export default class Client extends discord.Client {
     public signale: Signale.Signale;
     public server: Server;
     public redis: Redis.Redis;
-    public db: { Case: mongoose.Model<CaseInterface>};
+    public db: { Case: mongoose.Model<CaseInterface>, ApiKey: mongoose.Model<ApiKeyInterface>};
 
     constructor(token: string, options?: discord.ClientOptions) {
         // @ts-ignore
@@ -29,7 +29,7 @@ export default class Client extends discord.Client {
         this.events = new Collection<Event>();
         this.config = config;
         this.redis = new Redis();
-        this.db = { Case }
+        this.db = { Case, ApiKey }
         this.signale = Signale;
         this.server = new Server(this)
         this.signale.config({
