@@ -22,7 +22,7 @@ router.get('/active', forceAuth, function (req, res) {
     res.send('hi');
 });
 
-router.get('/api/cases/:caseId?apiKey', async (req, res) => {
+router.get('/api/cases/:caseId?', async (req, res) => {
     await connect();
     const caseid = req.params.caseId;
     const urlKey = req.query.apiKey;
