@@ -26,6 +26,7 @@ router.get('/api/cases/:caseId', async (req, res) => {
     // if (req.ip !== '73.136.46.75') return res.sendStatus(403);
     await connect();
     const caseid = req.params.caseId;
+    if (!caseid) return res.staus(400).json({code: '400', message: 'BAD_REQUEST'});
     const caseObj = await Case.findOne({caseId: caseid});
     if (!caseObj) return res.status(404).json({code: '404', message: 'NOT_FOUND'});
     console.log(caseObj)
