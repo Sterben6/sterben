@@ -24,7 +24,7 @@ router.get('/active', function (req, res) {
 
 router.get('/api/cases/:caseId', async (req, res) => {
     await connect();
-    const modelSchema = mongoose.model('Case', Case)
+    const modelSchema = mongoose.model<CaseInterface>('Case', Case)
 
     const caseid = req.params.caseId;
     const caseObj = modelSchema.findOne({caseId: caseid});
