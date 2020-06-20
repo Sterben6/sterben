@@ -65,6 +65,9 @@ export default class Server {
         this.app.get( "/", ( req, res ) => {
             res.sendFile(path.join(process.cwd() + '/public/index.html'))
         });
+        this.app.get('/404', async (req, res) => {
+            res.sendFile(path.join(process.cwd() + '/public/404.html'))
+        })
         this.app.use(favicon(path.join(process.cwd(), 'img', 'favicon.ico')))
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
