@@ -74,7 +74,7 @@ export default class Server {
         })
         this.app.use('/jagc', require('../routes/jagc'));
         this.app.get('*', function(req, res){
-            res.status(404).send('what???');
+            res.status(404).redirect('/404');
         });
     }
 
