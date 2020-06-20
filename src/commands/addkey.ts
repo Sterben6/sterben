@@ -3,7 +3,7 @@ import {Message, MessageEmbed} from 'discord.js';
 import { Client, Command } from '../class';
 import crypto from 'crypto';
 
-export default class addCase extends Command {
+export default class addKey extends Command {
     constructor(client: Client) {
         super(client);
         this.name = 'addkey';
