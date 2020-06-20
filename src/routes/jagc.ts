@@ -3,7 +3,7 @@ const router = new Router();
 import path from 'path';
 import mongoose from 'mongoose';
 import config from '../../config.json';
-import { Case } from "../models";
+import { Case, CaseInterface } from "../models";
 
 async function connect() {
     await mongoose.connect(config.mongoURL);
@@ -24,7 +24,7 @@ router.get('/active', function (req, res) {
 
 router.get('/api/cases/:caseId', async (req, res) => {
     await connect();
-    const modelSchema = mongoose.model(Case)
+    const modelSchema = mongoose.model('Case', Case)
 
     const caseid = req.params.caseId;
     const caseObj = modelSchema.findOne({caseId: caseid});
