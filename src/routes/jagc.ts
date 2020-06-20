@@ -6,7 +6,7 @@ import config from '../../config.json';
 import { Case, CaseInterface } from "../models";
 
 async function connect() {
-    await mongoose.connect(config.mongoURL);
+    await mongoose.connect(config.mongoURL, { useNewUrlParser: true, useUnifiedTopology: true});
 
 }
 const forceAuth = (req, res) => {
