@@ -3,7 +3,7 @@ const router = new Router();
 import path from 'path';
 import mongoose from 'mongoose';
 import config from '../../config.json';
-import { Case } from "../models";
+import { Case, ApiKey } from "../models";
 
 async function connect() {
     await mongoose.connect(config.mongoURL, { useNewUrlParser: true, useUnifiedTopology: true});
@@ -22,11 +22,15 @@ router.get('/active', forceAuth, function (req, res) {
     res.send('hi');
 });
 
-router.get('/api/cases/:caseId', async (req, res) => {
+router.get('/api/cases/:caseId?apiKey=', async (req, res) => {
     // if (req.ip !== '73.136.46.75') return res.sendStatus(403);
     await connect();
     const caseid = req.params.caseId;
-    if (!caseid) return res.staus(400).json({code: '400', message: 'BAD_REQUEST'});
+    const urlKey = req.query.apiKey;
+    if (!urlKey) return res.status(400).json({code: '401', message: 'UNAUTHORIZED'});
+    const keyObj = await ApiKey.findOne({ApiKey: urlKey});
+    if (!keyObj) return res.status(404).json({code: '401', message: 'UNAUTHORIZED'});
+    if (!caseid) return res.status(400).json({code: '400', message: 'BAD_REQUEST'});
     const caseObj = await Case.findOne({caseId: caseid});
     if (!caseObj) return res.status(404).json({code: '404', message: 'NOT_FOUND'});
     console.log(caseObj)
