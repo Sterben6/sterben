@@ -22,14 +22,13 @@ router.get('/active', forceAuth, function (req, res) {
     res.send('hi');
 });
 
-router.get('/api/cases/:caseId', async (req, res) => {
-    // if (req.ip !== '73.136.46.75') return res.sendStatus(403);
+router.get('/api/cases/:caseId?apiKey', async (req, res) => {
     await connect();
     const caseid = req.params.caseId;
-    // const urlKey = req.query.apiKey;
-    // if (!urlKey) return res.status(400).json({code: '401', message: 'UNAUTHORIZED'});
-    // const keyObj = await ApiKey.findOne({ApiKey: urlKey});
-    // if (!keyObj) return res.status(404).json({code: '401', message: 'UNAUTHORIZED'});
+    const urlKey = req.query.apiKey;
+    if (!urlKey) return res.status(400).json({code: '401', message: 'UNAUTHORIZED'});
+    const keyObj = await ApiKey.findOne({ApiKey: urlKey});
+    if (!keyObj) return res.status(404).json({code: '401', message: 'UNAUTHORIZED'});
     if (!caseid) return res.status(400).json({code: '400', message: 'BAD_REQUEST'});
     const caseObj = await Case.findOne({caseId: caseid});
     if (!caseObj) return res.status(404).json({code: '404', message: 'NOT_FOUND'});
