@@ -31,7 +31,7 @@ export default class Client extends discord.Client {
         this.redis = new Redis();
         this.db = { Case }
         this.signale = Signale;
-        this.server = new Server()
+        this.server = new Server(this)
         this.signale.config({
             displayFilename: true,
             displayTimestamp: true,
