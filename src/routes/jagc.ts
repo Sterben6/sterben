@@ -27,7 +27,7 @@ router.get('/api/cases/:caseId', async (req, res) => {
     await connect();
     const modelSchema = Case;
     const caseid = req.params.caseId;
-    const caseObj = modelSchema.findOne({caseId: caseid});
+    const caseObj = await modelSchema.findOne({caseId: caseid});
     if (!caseObj) return res.status(404);
     console.log(caseObj)
 })
