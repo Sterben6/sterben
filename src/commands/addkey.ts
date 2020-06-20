@@ -1,5 +1,5 @@
 
-import {Message, MessageEmbed, User} from 'discord.js';
+import {Message, MessageEmbed} from 'discord.js';
 import { Client, Command } from '../class';
 import crypto from 'crypto';
 

@@ -1,5 +1,4 @@
 import { Schema, model, Document } from 'mongoose';
-import { User } from 'discord.js';
 
 export interface ApiKeyInterface extends Document {
     ApiKey: string,
