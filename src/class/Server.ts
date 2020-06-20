@@ -62,8 +62,11 @@ export default class Server {
         this.app.set('view engine', 'html');
         this.app.use(express.static(path.join(process.cwd() + '/public')))
         this.app.use(bodyParser.json());
-        this.app.get( "/", ( req, res ) => {
+        this.app.get("/home", ( req, res ) => {
             res.sendFile(path.join(process.cwd() + '/public/index.html'))
+        });
+        this.app.get("/", ( req, res ) => {
+            res.redirect('/home');
         });
         this.app.get('/404', async (req, res) => {
             res.sendFile(path.join(process.cwd() + '/public/404.html'))
