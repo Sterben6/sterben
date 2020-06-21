@@ -1,3 +1,6 @@
+import ReactDOM from 'react-dom';
+import React from 'react';
+
 const main = (<div>
     <meta charSet="UTF-8" />
     <link rel="stylesheet" href="../static.css" />
@@ -39,5 +42,4 @@ const main = (<div>
         </li>
     </ul>
 </div>);
-
 ReactDOM.render(main, document.getElementById('root'))
