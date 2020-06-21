@@ -40,20 +40,14 @@ ul {
     background-color: #2C2F35;
 }
 
-li a {
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-.button {
+li button {
     display: block;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-li a:hover {
+li button:hover {
     background-color: #403f3e;
     color: white;
 }
