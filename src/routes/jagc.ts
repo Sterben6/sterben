@@ -38,6 +38,10 @@ router.get('/api/cases/:caseId?', async (req, res) => {
     await res.status(200).json({caseId: caseObj.caseId, creatorId: caseObj.creatorId, users: caseObj.users, charges: caseObj.charges})
 });
 
+router.get('/login', forceAuth, function (req, res) {
+    res.send('hi');
+});
+
 
 
 
