@@ -55,7 +55,7 @@ li a {
     text-align: center;
 }
 
-li button:hover {
+li a:hover {
     background-color: #403f3e;
     color: white;
 }
