@@ -59,7 +59,7 @@ export default class Server {
                 },
             },
             }));
-        this.app.set('view engine', 'html');
+        this.app.set('view engine', 'jsx');
         this.app.use(express.static(path.join(process.cwd() + '/public')))
         this.app.use(bodyParser.json());
         this.app.get("/home", ( req, res ) => {
