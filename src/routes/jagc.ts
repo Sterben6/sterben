@@ -12,7 +12,7 @@ async function connect() {
 const forceAuth = (req, res) => {
     if (!req.session.user) return res.redirect('/')
 }
-const homePath = path.join(process.cwd() + '/public/jagc/home.jsx');
+const homePath = path.join(process.cwd() + '/public/jagc/home.html');
 router.get('/', function (req, res) {
     res.sendFile(homePath);
 })
