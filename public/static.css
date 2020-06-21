@@ -36,15 +36,19 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 200px;
-    background-color: #2C2F35;
+    width: 80px;
+    background-color: #505953;
 }
 
 li button {
     display: block;
     color: white;
-    padding: 8px 16px;
+    width: 80px;
+    height: 40px;
     text-decoration: none;
+    background-color: #505953;
+    border: none;
+    text-align: center;
 }
 
 li button:hover {
