@@ -15,8 +15,8 @@
     <h2> Home </h2>
 </div>
 <ul>
-    <li id="HomeButton" onclick="location.href = 'https://sterben.tech/jagc'">
-        <a>Home</a>
+    <li>
+        <button id="HomeButton">Home</button>
     </li>
     <li id="CasesButton" onclick="location.href = 'https://sterben.tech/jagc/cases'">
         <a>Cases</a>
@@ -28,5 +28,10 @@
         <a>Team</a>
     </li>
 </ul>
+<script type="text/javascript">
+    document.getElementById('HomeButton').onclick = function() {
+        location.href = 'https://sterben.tech/jagc'
+    }
+</script>
 </body>
 </html>
