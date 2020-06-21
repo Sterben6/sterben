@@ -20,7 +20,7 @@
             	<button id="HomeButton">Home</button>
         	</li>
         	<li>
-            	<button id="CaseButton">Cases</button>
+            	<button id="CareerButton">Cases</button>
         	</li>
         	<li>
             	<button id="ApplyButton">Careers</button>
@@ -28,6 +28,9 @@
         	<li>
             	<button id="TeamButton">Team</button>
         	</li>
+			<li>
+				<button id="LoginButton">Login</button>
+			</li>
     	</ul>
 	</div>
 	<noscript>You need to enable javascript on your browser!</noscript>
@@ -38,12 +41,15 @@
     	document.getElementById('CaseButton').onclick = function() {
         	location.href = 'https://sterben.tech/jagc/cases'
     	};
-    	document.getElementById('ApplyButton').onclick = function() {
+    	document.getElementById('CareerButton').onclick = function() {
         	location.href = 'https://sterben.tech/jagc/careers'
     	};
     	document.getElementById('TeamButton').onclick = function() {
         	location.href = 'https://sterben.tech/jagc/team'
     	};
+		document.getElementById('LoginButton').onclick = function() {
+			location.href = 'https://sterben.tech/jagc/login'
+		};
 	</script>
     <script src="sidebar.jsx"></script>
 </body>
