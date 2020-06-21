@@ -28,6 +28,8 @@ router.get('/api/cases/:caseId?', async (req, res) => {
     const urlKey = req.query.apiKey;
     if (!urlKey) return res.status(400).json({code: '401', message: 'UNAUTHORIZED'});
     const keyObj = await ApiKey.findOne({ApiKey: urlKey});
+    const uses = keyObj.uses;
+    await keyObj.updateOne({ $set: {'uses': uses+1}});
     if (!keyObj) return res.status(404).json({code: '401', message: 'UNAUTHORIZED'});
     if (!caseid) return res.status(400).json({code: '400', message: 'BAD_REQUEST'});
     const caseObj = await Case.findOne({caseId: caseid});
