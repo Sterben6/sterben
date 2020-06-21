@@ -9,6 +9,25 @@
     <link rel="manifest" href="../../img/site.webmanifest">
     <title>Judge Advocate General Corps</title>
 </head>
+<noscript>You need to enable javascript on your browser!</noscript>
+<script type="text/javascript">
+	document.getElementById('HomeButton').onclick = function() {
+		location.href = 'https://sterben.tech/jagc'
+	};
+	document.getElementById('CaseButton').onclick = function() {
+		location.href = 'https://sterben.tech/jagc/cases'
+	};
+	document.getElementById('CareerButton').onclick = function() {
+		location.href = 'https://sterben.tech/jagc/careers'
+	};
+	document.getElementById('TeamButton').onclick = function() {
+		location.href = 'https://sterben.tech/jagc/team'
+	};
+	document.getElementById('LoginButton').onclick = function() {
+		location.href = 'https://sterben.tech/jagc/login'
+	};
+</script>
+<script src="../components/sidebar.jsx"></script>
 <body>
 	<div id="PageTitles">
     	<h1 id="Title"></h1>
@@ -33,24 +52,5 @@
 			</li>
     	</ul>
 	</div>
-	<noscript>You need to enable javascript on your browser!</noscript>
-	<script type="text/javascript">
-    	document.getElementById('HomeButton').onclick = function() {
-        	location.href = 'https://sterben.tech/jagc'
-    	};
-    	document.getElementById('CaseButton').onclick = function() {
-        	location.href = 'https://sterben.tech/jagc/cases'
-    	};
-    	document.getElementById('CareerButton').onclick = function() {
-        	location.href = 'https://sterben.tech/jagc/careers'
-    	};
-    	document.getElementById('TeamButton').onclick = function() {
-        	location.href = 'https://sterben.tech/jagc/team'
-    	};
-		document.getElementById('LoginButton').onclick = function() {
-			location.href = 'https://sterben.tech/jagc/login'
-		};
-	</script>
-    <script src="../components/sidebar.jsx"></script>
 </body>
 </html>
