@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "../styles/login.css";
+const { Button, FormGroup, FormControl, ControlLabel } = require('react-bootstrap')
+const React = require('react')
+const useState = React.useState;
+require("../styles/login.css");
 
 export default function Login() {
     const [email, setEmail] = useState("");
