@@ -38,7 +38,7 @@ router.get('/api/cases/:caseId?', async (req, res) => {
     await res.status(200).json({caseId: caseObj.caseId, creatorId: caseObj.creatorId, users: caseObj.users, charges: caseObj.charges})
 });
 
-router.get('/login', forceAuth, function (req, res) {
+router.get('/login', function (req, res) {
     res.render(process.cwd() + '/public/jagc/components/login.jsx')
 });
 
