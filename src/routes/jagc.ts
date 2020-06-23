@@ -37,9 +37,10 @@ router.get('/api/cases/:caseId?', async (req, res) => {
     console.log(caseObj)
     await res.status(200).json({caseId: caseObj.caseId, creatorId: caseObj.creatorId, users: caseObj.users, charges: caseObj.charges})
 });
-
+// @ts-ignore
+import { Login } from "../../public/jagc/components/login"
 router.get('/login', function (req, res) {
-    res.render(process.cwd() + '/public/jagc/components/login.jsx')
+    res.render(Login)
 });
 
 
