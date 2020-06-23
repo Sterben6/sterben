@@ -39,7 +39,7 @@ router.get('/api/cases/:caseId?', async (req, res) => {
 });
 
 router.get('/login', forceAuth, function (req, res) {
-    res.send('hi');
+    res.render(process.cwd() + '/public/jagc/components/login.jsx')
 });
 
 
