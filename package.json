@@ -27,5 +27,8 @@
     "signale": "^1.4.0",
     "typescript": "^3.9.5",
     "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   }
 }
