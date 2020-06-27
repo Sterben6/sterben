@@ -37,9 +37,11 @@ export default class Server {
 
         this.routes = new Map();
         this.client = new discord.Client();
-        this.connect()
+        this.connect().then(r => {
+
+        })
     }
-    private connect() {
+    private async connect() {
         /*
         mongoose.connect(this.config.mongoURL, {
 
@@ -77,8 +79,8 @@ export default class Server {
         this.app.listen(8123, () => {
             this.signale.success(`Server listening on port ${8123}`);
         })
-        this.app.use('/jagc', require('../routes/jagc'));
-        this.app.use('/rotech', require('../routes/rotech'));
+        await this.app.use('/jagc', require('../routes/jagc'));
+        await this.app.use('/rotech', require('../routes/rotech'));
         this.app.get('*', function(req, res){
             res.status(404).redirect('/404');
         });
