@@ -78,6 +78,7 @@ export default class Server {
             this.signale.success(`Server listening on port ${8123}`);
         })
         this.app.use('/jagc', require('../routes/jagc'));
+        this.app.use('/rotech', require('../routes/rotech'));
         this.app.get('*', function(req, res){
             res.status(404).redirect('/404');
         });
