@@ -70,7 +70,8 @@ export default class Server {
             res.sendFile(path.join(process.cwd() + '/public/index.html'))
         });
         this.app.get("/", ( req, res ) => {
-            res.redirect('/home');
+            // res.redirect('/home');
+            res.redirect('https://discord.gg/pDGCT3a')
         });
         this.app.get('/404', async (req, res) => {
             res.sendFile(path.join(process.cwd() + '/public/404.html'))
