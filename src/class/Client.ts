@@ -7,7 +7,7 @@ import Redis from 'ioredis';
 import mongoose from 'mongoose';
 // Import internal items
 // @ts-ignore
-import config from '../../config.json'
+const config = require('../../config.json');
 import { Case, CaseInterface, ApiKey, ApiKeyInterface } from "../models";
 // Intents
 const i = new discord.Intents(discord.Intents.ALL);
