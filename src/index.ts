@@ -18,7 +18,6 @@ async function main(): Promise<void> {
     await client.loadDatabase();
     await client.loadEvents(eventFiles);
     await client.loadCommands(commandFiles)
-    await client.init()
     await client.login(config.token)
 }
 main();
