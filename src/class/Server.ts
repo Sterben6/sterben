@@ -46,7 +46,7 @@ export default class Server {
     }
 
     private async loadRoutes(): Promise<void> {
-        const routes = fs.readdir('../routes');
+        const routes = await fs.readdir('../routes');
         await routes.forEach((routeFile) => {
             if (routeFile === 'index.js') return;
             try {
@@ -65,8 +65,6 @@ export default class Server {
             } catch (error) {
                 console.log(error)
             }
-        }).then(()=>{
-
         })
     }
     private async connect() {
@@ -98,7 +96,6 @@ export default class Server {
             res.sendFile(path.join(process.cwd() + '/public/index.html'))
         });
         this.app.get("/", ( req, res ) => {
-            // res.redirect('/home');
             res.redirect('https://discord.gg/pDGCT3a')
         });
         this.app.get('/404', async (req, res) => {
