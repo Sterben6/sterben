@@ -51,7 +51,7 @@ export default class Server {
         await routes.forEach((routeFile) => {
             if (routeFile === 'index.js') return;
             try {
-                const route: Route = new (require(`../routes/${routeFile}`).default)(this);
+                const route: Route = new (require(`../routes/${routeFile}`))(this);
                 if (route.conf.deprecated === true) {
                     route.deprecated();
                 } else if (route.conf.maintenance === true) {
