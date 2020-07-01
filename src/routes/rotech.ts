@@ -1,10 +1,17 @@
-import { Router } from 'express';
-const router = new Router();
+import { Route, Server } from '../class';
 
-router.get('/', function (req, res) {
-    res.redirect('https://discord.gg/pDGCT3a')
-})
+export default class RoTech extends Route {
+    constructor(server: Server) {
+        super(server, {authOnly: false, path: '/rotech', deprecated: false, maintenance: false });
+    }
 
-
-
-module.exports = router;
+    public bind() {
+        this.router.get('/', async (req, res) => {
+            try {
+                res.redirect('https://discord.gg/GCcbAeZ');
+            } catch (error) {
+                this.handleError(error, res);
+            }
+        });
+    }
+}

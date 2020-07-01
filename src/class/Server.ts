@@ -7,21 +7,21 @@ import helmet from 'helmet';
 import * as discord from 'discord.js';
 import Signale from 'signale';
 import path from 'path';
+import fs from 'fs-extra';
 // Import storage & DB libraries
 import Redis from 'ioredis';
 // Import internal items
 // @ts-ignore
 import config from '../../config.json'
-import { Route } from '.'
-import { Client } from '.';
+import { Client, Collection, Route } from '.';
 
 export default class Server {
     public config: { token: string; mongoURL: string;}
     public app: express.Application;
     public client: discord.Client;
     public redis: Redis.Redis;
-    public signale: Signale.Signale
-    public routes: Map<string, Route>
+    public signale: Signale.Signale;
+    public routes: Collection<Route>;
     public parent: Client;
     constructor(parent: Client) {
         this.parent = parent;
@@ -35,9 +35,37 @@ export default class Server {
             displayDate: true,
         });
 
-        this.routes = new Map();
+        this.routes = new Collection();
         this.client = new discord.Client();
-        this.connect().then(r => {
+        this.connect().then(() => {
+
+        });
+        this.loadRoutes().then(() => {
+
+        });
+    }
+
+    private async loadRoutes(): Promise<void> {
+        const routes = fs.readdir('../routes');
+        await routes.forEach((routeFile) => {
+            if (routeFile === 'index.js') return;
+            try {
+                const route: Route = new (require(`../routes/${routeFile}`).default)(this);
+                if (route.conf.deprecated === true) {
+                    route.deprecated();
+                } else if (route.conf.maintenance === true) {
+                    route.maintenance();
+                } else {
+                    route.bind();
+                }
+                this.routes.set(route.conf.path, route);
+                this.app.use(route.conf.path, route.router);
+                this.parent.signale.success(`Successfully loaded route ${route.conf.path}`);
+
+            } catch (error) {
+                console.log(error)
+            }
+        }).then(()=>{
 
         })
     }
