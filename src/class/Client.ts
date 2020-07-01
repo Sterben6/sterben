@@ -65,8 +65,4 @@ export default class Client extends discord.Client {
         }
     }
 
-    public async init() {
-        this.server = new Server(this);
-    }
-
 };
