@@ -11,7 +11,7 @@ export default class Route {
 
     public signale: Signale.Signale;
 
-    constructor(server: Server, options: { path: string, authOnly: boolean, deprecated?: boolean, maintenance?: boolean }) {
+    constructor(server: Server, options: { path: string, deprecated?: boolean, maintenance?: boolean }) {
         this.server = server;
         this.conf = options;
         this.router = Router();

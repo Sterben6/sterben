@@ -2,7 +2,7 @@ import { Route, Server } from '../class';
 
 export default class rotech extends Route {
     constructor(server: Server) {
-        super(server, {authOnly: false, path: '/rotech', deprecated: false, maintenance: false });
+        super(server, {path: '/rotech', deprecated: false, maintenance: false });
     }
 
     public bind() {
