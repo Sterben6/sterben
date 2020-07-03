@@ -107,7 +107,7 @@ export default class Server {
             this.signale.success(`Server listening on port ${8123}`);
         })
         this.app.get('*', function(req, res){
-            res.status(404).redirect('/404');
+            res.sendFile(path.join(process.cwd() + '/public/404.html'))
         });
     }
 

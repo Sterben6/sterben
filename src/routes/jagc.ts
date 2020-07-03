@@ -8,9 +8,7 @@ export default class jagc extends Route {
     public bind() {
         this.router.get('/', async (req, res) => {
             try {
-                const forceAuth = (req, res) => {
-                    if (!req.session.user) return res.redirect('/')
-                }
+
             } catch (error) {
                 console.log(error)
             }
