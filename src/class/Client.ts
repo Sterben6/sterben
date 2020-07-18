@@ -5,7 +5,7 @@ import Signale from 'signale';
 // Import storage & DB libraries
 import Redis from 'ioredis';
 import mongoose from 'mongoose';
-// Import internal items
+// Import internal item
 // @ts-ignore
 const config = require('../../config.json');
 import { Case, CaseInterface, ApiKey, ApiKeyInterface } from "../models";
