@@ -47,27 +47,22 @@ export default class Server {
 
     private async loadRoutes(): Promise<void> {
         const routes = await fs.readdir(__dirname + '/../routes');
-        await routes.forEach((routeFile) => {
-            if (routeFile === 'index.js') return;
-            try {
-
-                const route: Route = new (require(`../routes/${routeFile}`))(this);
-                if (route.conf.deprecated === true) {
-                    route.deprecated();
-                } else if (route.conf.maintenance === true) {
-                    route.maintenance();
-                } else {
-                    route.bind();
-                    route.init();
-                }
-                this.routes.set(route.conf.path, route);
-                this.app.use(route.conf.path, route.router);
-                this.parent.signale.success(`Successfully loaded route ${route.conf.path}`);
-
-            } catch (error) {
-                console.log(error)
+        for (const RouteFile of routes) {
+            if (RouteFile == 'index.js') return;
+            const route = new RouteFile(this)
+            if (route.conf.deprecated) {
+                route.deprecated();
+            } else if (route.conf.maintenance) {
+                route.maintenance();
+            } else {
+                route.init();
+                route.bind();
             }
-        })
+            this.parent.signale.success(`Successfully loaded route ${route.conf.path}.`);
+            this.routes.add(route.conf.path, route);
+            this.app.use(route.conf.path, route.router);
+        }
+        this.app.listen(8123)
     }
     private async connect() {
         /*
@@ -96,9 +91,6 @@ export default class Server {
         this.app.use(bodyParser.json());
         this.app.get("/home", ( req, res ) => {
             res.sendFile(path.join(process.cwd() + '/public/index.html'))
-        });
-        this.app.get("/", ( req, res ) => {
-            res.redirect('https://discord.gg/pDGCT3a')
         });
         this.app.get('/404', async (req, res) => {
             res.sendFile(path.join(process.cwd() + '/public/404.html'))
