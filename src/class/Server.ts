@@ -49,7 +49,7 @@ export default class Server {
         const routes = await fs.readdir(__dirname + '/../routes');
         for (const RouteFile of routes) {
             if (RouteFile == 'index.js') return;
-            const route = new RouteFile(this)
+            const route = RouteFile(this)
             if (route.conf.deprecated) {
                 route.deprecated();
             } else if (route.conf.maintenance) {
