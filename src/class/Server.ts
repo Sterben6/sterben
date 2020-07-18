@@ -58,6 +58,7 @@ export default class Server {
                     route.maintenance();
                 } else {
                     route.bind();
+                    route.init();
                 }
                 this.routes.set(route.conf.path, route);
                 this.app.use(route.conf.path, route.router);

@@ -1,2 +1,1 @@
-export { default as jagc } from './jagc';
-export { default as rotech } from './rotech';
+export { default as root } from './root';

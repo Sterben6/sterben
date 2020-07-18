@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, Response } from 'express';
 import { Server } from '.';
 import Signale from 'signale';
 
@@ -11,9 +11,9 @@ export default class Route {
 
     public signale: Signale.Signale;
 
-    constructor(server: Server, options: { path: string, deprecated?: boolean, maintenance?: boolean }) {
+    constructor(server: Server) {
         this.server = server;
-        this.conf = options;
+        this.conf = { path: ''}
         this.router = Router();
         this.signale = Signale();
     }
@@ -68,9 +68,6 @@ export default class Route {
                 SERVER_ERROR: ['INTERNAL_ERROR', 'An internal error has occurred, Operators have been notified.'],
                 DEPRECATED: ['ENDPOINT_OR_RESOURCE_DEPRECATED', 'The endpoint or resource you\'re trying to access has been deprecated.'],
                 MAINTENANCE_OR_UNAVAILABLE: ['SERVICE_UNAVAILABLE', 'The endpoint or resource you\'re trying to access is either in maintenance or is not available.'],
-            },
-            discord: {
-                SERVER_ID: '',
             },
         };
     }
