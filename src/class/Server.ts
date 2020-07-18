@@ -46,10 +46,9 @@ export default class Server {
     }
 
     private async loadRoutes(): Promise<void> {
-        const routes = await fs.readdir(__dirname + '/../routes');
+        const routes = Object.values<typeof Route>(require('../routes'));
         for (const RouteFile of routes) {
-            if (RouteFile == 'index.js') return;
-            const route = RouteFile(this)
+            const route = new RouteFile(this)
             if (route.conf.deprecated) {
                 route.deprecated();
             } else if (route.conf.maintenance) {
