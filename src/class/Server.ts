@@ -56,7 +56,7 @@ export default class Server {
                 route.init();
                 route.bind();
             }
-            this.parent.signale.success(`Successfully loaded route ${route.conf.path}.`);
+            console.log(`Successfully loaded route ${route.conf.path}.`);
             this.routes.add(route.conf.path, route);
             this.app.use(route.conf.path, route.router);
         }
