@@ -4,12 +4,12 @@ export default class Root extends Route {
     constructor(server: Server) {
         super(server);
         this.conf = {
-            path: '/'
+            path: '/thing'
         };
     }
 
     public bind() {
 
-        this.router.get('/', (req, res) => res.redirect('http://discord.gg/scproblox'))
+        this.router.get('/thing', (req, res) => res.redirect('http://discord.gg/scproblox'))
     }
 }
