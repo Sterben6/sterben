@@ -7,7 +7,6 @@ import helmet from 'helmet';
 import * as discord from 'discord.js';
 import Signale from 'signale';
 import path from 'path';
-import fs from 'fs-extra';
 // Import storage & DB libraries
 import Redis from 'ioredis';
 // Import internal items
